@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText ed1,ed2,ed3;
     private  TextView txv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         ed1=findViewById(R.id.editText);
         ed2=findViewById(R.id.editText2);
         ed3=findViewById(R.id.editText3);
-        txv=findViewById(R.id.editText);
+        txv=findViewById(R.id.textView2);
 
         float height = Float.parseFloat(ed2.getText().toString());
         float weight = Float.parseFloat(ed2.getText().toString());
@@ -34,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         String BMI2 = String.valueOf(BMI1);
 
         txv.setTextSize(size);
-        txv.setText(ed1.getText().toString()+",您好\n"+"您的BMI是:"+BMI2);
-        Toast.makeText(context:this, standardBMI(BMI1),Toast.LENGTH_LONG).show();
+        txv.setText(ed1.getText().toString()+"Hello"+",\n"+"您的BMI是:"+BMI2);
+        Toast.makeText( context: this, standardBMI(BMI1), Toast.LENGTH_LONG).show();
     }
 
     private float calculateBMI(float ht,float wt){
@@ -48,14 +50,15 @@ public class MainActivity extends AppCompatActivity {
 
         if(st>25){
             alert = String.valueOf("You are too heavy!!!");
-            getWindow().setBackgroundDrawable(R.drawable.dog);
+            getWindow().setBackgroundDrawableResource(R.drawable.dog);
         }
         else if(st<18.5){
             alert = String.valueOf("You are too slim.");
-            getWindow().setBackgroundDrawable(R.drawable.dog);
+            getWindow().setBackgroundDrawableResource(R.drawable.dog);
         }
         else {
             alert = String.valueOf("You body is good");
         }
+        return alert;
     }
 }
